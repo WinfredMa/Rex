@@ -12,5 +12,7 @@ RUN apt-get install -y nginx
 COPY ./rex /etc/nginx/sites-available/rex
 RUN ln -s /etc/nginx/sites-available/rex /etc/nginx/sites-enabled/rex
 RUN rm /etc/nginx/sites-enabled/default
-RUN service nginx start
+ADD ./run.sh /root/run.sh
+RUN chmod u+x /root/run.sh
+CMD /root/run.sh
 EXPOSE 3000
